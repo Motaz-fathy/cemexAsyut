@@ -1,0 +1,142 @@
+#sidebar {
+    background-color: #4f46e5;
+    height: 100%;
+    width: 18rem;
+    position: fixed;
+    overflow: hidden;
+    text-color: #fff;
+    border-radius: 1.5rem;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  #sidebar.md\:relative {
+    position: relative;
+  }
+  
+  #sidebar .border-b {
+    border-bottom: 1px solid #cbd5e0;
+  }
+  
+  #sidebar .p-4 {
+    padding: 1rem;
+  }
+  
+  #sidebar .flex {
+    display: flex;
+  }
+  
+  #sidebar .justify-center {
+    justify-content: center;
+  }
+  
+  #sidebar .items-center {
+    align-items: center;
+  }
+  
+  #sidebar .gap-2 {
+    gap: 0.5rem;
+  }
+  
+  #sidebar .text-2xl {
+    font-size: 1.875rem;
+  }
+  
+  #sidebar .font-bold {
+    font-weight: 700;
+  }
+  
+  #sidebar .text-blue-400 {
+    color: #4299e1;
+  }
+  
+  #sidebar img {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+  }
+  
+  #driverViolationBtn,
+  #emplViolationBtn {
+    width: 100%;
+    background-color: #4f46e5;
+    text-align: left;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  #driverViolationBtn:hover,
+  #emplViolationBtn:hover {
+    background-color: #4338ca;
+  }
+  
+  #driverViolationBtn svg,
+  #emplViolationBtn svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  #driverViolationMenu,
+  #emplViolationMenu {
+    display: none;
+    background-color: #4f46e5;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  #driverViolationMenu.show,
+  #emplViolationMenu.show {
+    display: flex;
+  }
+  
+  #driverViolationMenu button,
+  #emplViolationMenu button {
+    width: 100%;
+    text-align: left;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    background-color: #4f46e5;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  #driverViolationMenu button:hover,
+  #emplViolationMenu button:hover {
+    background-color: #4338ca;
+  }
+  
+  #arrowIcon,
+  #arrowIconempl {
+    width: 1.25rem;
+    height: 1.25rem;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  /* Additional CSS for mobile responsiveness */
+  @media (min-width: 768px) {
+    #sidebar {
+      width: 100%;
+      position: relative;
+      border-radius: 0;
+      transform: translateX(0);
+    }
+  
+    #sidebar.md\:relative {
+      position: relative;
+    }
+  
+    #sidebar .flex-col {
+      flex-direction: column;
+    }
+  }
+  
