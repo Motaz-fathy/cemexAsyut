@@ -1,91 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
-    <!-- Include Tailwind CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
-    <style>
-        @font-face {
-        font-family: 'Alkatra';
-        src: url('../fonts/Alkatra-VariableFont_wght.ttf') format('truetype');
-        font-weight: normal;
-        font-style: normal;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <!-- Include Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet" />
+  <style>
+    @font-face {
+      font-family: 'Alkatra';
+      src: url('../fonts/Alkatra-VariableFont_wght.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
 
-      .font-Alkatra {
-        font-family: 'Alkatra', sans-serif;
-      }
-     .clip{
+    .font-Alkatra {
+      font-family: 'Alkatra', sans-serif;
+    }
+
+    .clip {
       clip-path: polygon(0 0, 21% 100%, 51% 17%);
-     }
-    </style>
-  </head>
+    }
+  </style>
+</head>
 
-  <body class="bg-gradient-to-tr to-gray-100 from-indigo-600 flex items-center flex-col h-auto max-w-full font-Alkatra">
-
-    <div class="w-full flex justify-between items-center ">
-      <div class="  rounded-r-3xl  w-2/3 min-h-screen flex justify-center items-center sm:flex lg:flex md:flex hidden">
-         <img src="./img/login2.png" alt="login.png" class="bg-cover w-full min-h-40 ">
-      </div>
-      <div class="flex justify-center items-center px-20 sm:w-full sm:justify-center lg:justify-center md:justify-center ">
-        <div class="bg-white p-8 rounded-xl shadow-lg max-w-md w-full py-20">
-          <h1 class="text-2xl font-bold mb-4">Welcome to CEMEX! 👋</h1>
-          <p class="text-gray-600 mb-4">
-            Please sign in to your account and start the adventure
-          </p>
-    
-          <form id="loginForm"  class="w-full" onsubmit="return validateForm()">
-            <div class="mb-1">
-              <label for="userId" class="block text-sm font-medium text-gray-700"
-                >User ID</label
-              >
-              <input
-                type="text"
-                id="userId"
-                name="userId"
-                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                pattern="\d+"
-                title="Please enter only numbers"
-              />
-            </div>
-             <div id="UserError" class="text-indigo-400"></div>
-            <div class="mb-1">
-              <label for="password" class="block text-sm font-medium text-gray-700"
-                >Password</label
-              >
-              <input
-                type="password"
-                id="password"
-                name="password"
-                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              />
-            </div>
-            <div id="PassError" class="text-indigo-400"></div>
-          
-    
-            <a href="dashboard.html"
-              type="submit"
-              class="w-full bg-indigo-600 flex justify-center items-center  text-white py-2 rounded-md hover:bg-indigo-700 mt-2 transition-all  duration-300 "
-            >
-              Sign In
-            </a>
-          </form>
-    
-          <p class="text-sm text-gray-600 mt-4">
-            New on our platform?
-            <a href="#" class="text-indigo-600 hover:text-indigo-800"
-              >Create an account</a
-            >
-          </p>
-        </div>
+<body class="bg-gradient-to-tr to-gray-100 from-indigo-600 bg-cover bg-no-repeat overflow-hidden    max-md:h-auto font-Alkatra">
+  <div class="w-full flex h-screen  lg:flex-row justify-between items-center max-md:my-auto ">
+    <div class="hidden lg:flex lg:w-2/3 lg:min-h-screen justify-center items-center  ">
+      <img src="./img/login2.png" alt="login.png" class="bg-cover w-full h-60 lg:h-auto lg:w-1/2  " />
+    </div>
+    <div class="flex justify-center items-center w-full lg:w-2/3  p-4 lg:px-20 ">
+      <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
+        <h1 class="text-2xl font-bold mb-4">Welcome to CEMEX! 👋</h1>
+        <p class="text-gray-600 mb-4">Please sign in to your account and start the adventure</p>
+        <form id="loginForm" class="w-full" onsubmit="return validateForm()">
+          <div class="mb-4">
+            <label for="userId" class="block text-sm font-medium text-gray-700">User ID</label>
+            <input type="text" id="userId" name="userId" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" pattern="\d+" title="Please enter only numbers" />
+          </div>
+          <div id="UserError" class="text-indigo-400"></div>
+          <div class="mb-4">
+            <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+            <input type="password" id="password" name="password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+          </div>
+          <div id="PassError" class="text-indigo-400"></div>
+          <a type="submit" href="./dashboard.html" class="w-full flex justify-center items-center bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 transition-all duration-300">Sign In</a>
+        </form>
+        <p class="text-sm text-gray-600 mt-4">New on our platform? <a href="#" class="text-indigo-600 hover:text-indigo-800">Create an account</a></p>
       </div>
     </div>
-
-    <script src="./js/login.js"></script>
-  </body>
+  </div>
+  <script src="./js/login.js"></script>
+</body>
 </html>
