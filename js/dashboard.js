@@ -1,91 +1,115 @@
-const driverViolationBtn = document.getElementById('driverViolationBtn');
-const driverViolationMenu = document.getElementById('driverViolationMenu');
-const arrowIcon = document.getElementById('arrowIcon');
 
-const emplViolationBtn = document.getElementById('emplViolationBtn')
-const emplViolationMenu = document.getElementById('emplViolationMenu')
-const arrowIconempl = document.getElementById('arrowIconempl')
-
-driverViolationBtn.addEventListener('click', () => {
-  driverViolationMenu.classList.toggle('hidden');
-  arrowIcon.classList.toggle('rotate-180');
+document
+.querySelector(".userDropdown")
+.addEventListener("click", function (event) {
+  event.preventDefault();
+  const dropdownMenu = document.querySelector(".userDropdownMenu");
+  if (dropdownMenu.classList.contains("hidden")) {
+    dropdownMenu.classList.remove("hidden");
+    dropdownMenu.classList.remove("dropdown-animation-leave");
+    dropdownMenu.classList.add("dropdown-animation-enter");
+  } else {
+    dropdownMenu.classList.remove("dropdown-animation-enter");
+    dropdownMenu.classList.add("dropdown-animation-leave");
+    setTimeout(() => {
+      dropdownMenu.classList.add("hidden");
+    }, 300);
+  }
 });
 
-emplViolationBtn.addEventListener('click', () => {
-    emplViolationMenu.classList.toggle('hidden');
-    arrowIconempl.classList.toggle('rotate-180');
-  });
+// Close the dropdown if the user clicks outside of it
+window.onclick = function (event) {
+const dropdownMenu = document.querySelector(".userDropdownMenu");
+if (
+  !event.target.closest(".userDropdown") &&
+  !event.target.closest(".userDropdownMenu")
+) {
+  if (!dropdownMenu.classList.contains("hidden")) {
+    dropdownMenu.classList.remove("dropdown-animation-enter");
+    dropdownMenu.classList.add("dropdown-animation-leave");
+    setTimeout(() => {
+      dropdownMenu.classList.add("hidden");
+    }, 300); // Match the duration of the leave animation
+  }
+}
+};
 
-const toggleSidebar = document.getElementById('toggleSidebar')  
-const sidebar = document.getElementById('sidebar');
-toggleSidebar.addEventListener('click', () => {
-    if (sidebar.classList.contains('w-72')) {
-      sidebar.classList.replace('w-72', 'w-0');
-    } else {
-      sidebar.classList.replace('w-0', 'w-72');
-    }
-  });
+document
+.getElementById("driverViolationBtn")
+.addEventListener("click", function () {
+  const menu = document.getElementById("driverViolationMenu");
+  menu.classList.toggle("hidden");
+  this.querySelector("svg").classList.toggle("rotate-180");
+});
 
+document
+.getElementById("emplViolationBtn")
+.addEventListener("click", function () {
+  const menu = document.getElementById("emplViolationMenu");
+  menu.classList.toggle("hidden");
+  this.querySelector("svg").classList.toggle("rotate-180");
+});
 
-//  
-  const data = [
-    { truckName: 'Truck 1', type: 'Type A', avgProbability: '80%', dateConfirm: '2023-05-01' },
-    { truckName: 'Truck 2', type: 'Type B', avgProbability: '70%', dateConfirm: '2023-05-02' },
-    { truckName: 'Truck 3', type: 'Type C', avgProbability: '60%', dateConfirm: '2023-05-03' },
-    { truckName: 'Truck 4', type: 'Type D', avgProbability: '34%', dateConfirm: '2023-05-04' },
-    { truckName: 'Truck 4', type: 'Type D', avgProbability: '11%', dateConfirm: '2023-05-04' },
-    { truckName: 'Truck 4', type: 'Type D', avgProbability: '96%', dateConfirm: '2023-05-04' },
-    { truckName: 'Truck 4', type: 'Type D', avgProbability: '90%', dateConfirm: '2023-05-04' },
-    { truckName: 'Truck 4', type: 'Type D', avgProbability: '50%', dateConfirm: '2023-05-04' },
-    { truckName: 'Truck 4', type: 'Type D', avgProbability: '10%', dateConfirm: '2023-05-04' },
-    { truckName: 'Truck 4', type: 'Type D', avgProbability: '25%', dateConfirm: '2023-05-04' },
-    { truckName: 'Truck 4', type: 'Type D', avgProbability: '40%', dateConfirm: '2023-05-04' },
-    { truckName: 'Truck 4', type: 'Type D', avgProbability: '34%', dateConfirm: '2023-05-04' },
-    // Add more data as needed
-];
+document
+.getElementById("toggleSidebar")
+.addEventListener("click", function () {
+  const sidebar = document.getElementById("sidebar");
 
-const rowsPerPage = 6;
-let currentPage = 1;
+  sidebar.classList.toggle("w-72");
+  sidebar.classList.toggle("w-0");
+});
 
-function renderTable(data, page, rowsPerPage) {
-    const start = (page - 1) * rowsPerPage;
-    const end = start + rowsPerPage;
-    const paginatedData = data.slice(start, end);
+document
+.getElementById("toggleSidebar2")
+.addEventListener("click", function () {
+  const sidebar = document.getElementById("sidebar");
 
-    const tableBody = document.getElementById('table-body');
-    tableBody.innerHTML = '';
+  sidebar.classList.toggle("w-72");
+  sidebar.classList.toggle("w-0");
+});
 
-    paginatedData.forEach(row => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <td>${row.truckName}</td>
-            <td>${row.type}</td>
-            <td>${row.avgProbability}</td>
-            <td><button class="btn btn-primary">${row.dateConfirm}</button></td>
-        `;
-        tableBody.appendChild(tr);
-    });
+// dropdowns
+const alertsDropdown = document.getElementById("alertsDropdown");
+const alertsDropdownMenu = document.getElementById("alertsDropdownMenu");
+
+// Toggle dropdown menu visibility
+alertsDropdown.addEventListener("click", function (e) {
+e.preventDefault();
+alertsDropdownMenu.classList.toggle("hidden");
+alertsDropdownMenu.classList.toggle("dropdown-animation-enter");
+
+// Close dropdown on click outside
+document.addEventListener("click", closeDropdown);
+});
+
+function closeDropdown(event) {
+const isClickInside = alertsDropdown.contains(event.target);
+if (!isClickInside) {
+  alertsDropdownMenu.classList.add("dropdown-animation-leave");
+  setTimeout(() => {
+    alertsDropdownMenu.classList.remove(
+      "dropdown-animation-enter",
+      "dropdown-animation-leave"
+    );
+    alertsDropdownMenu.classList.add("hidden");
+  }, 300); // Animation duration
+  document.removeEventListener("click", closeDropdown);
+}
 }
 
-function renderPagination(data, rowsPerPage) {
-    const pageCount = Math.ceil(data.length / rowsPerPage);
-    const pagination = document.getElementById('pagination');
-    pagination.innerHTML = '';
+// Remove animation classes on animation end
+alertsDropdownMenu.addEventListener("animationend", function () {
+alertsDropdownMenu.classList.remove(
+  "dropdown-animation-enter",
+  "dropdown-animation-leave"
+);
+});
 
-    for (let i = 1; i <= pageCount; i++) {
-        const li = document.createElement('li');
-        li.className = `page-item ${i === currentPage ? 'active' : ''}`;
-        li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
-        li.addEventListener('click', function () {
-            currentPage = i;
-            renderTable(data, currentPage, rowsPerPage);
-            renderPagination(data, rowsPerPage);
-        });
-        pagination.appendChild(li);
-    }
-}
 
-document.addEventListener('DOMContentLoaded', function () {
-    renderTable(data, currentPage, rowsPerPage);
-    renderPagination(data, rowsPerPage);
-});  
+window.addEventListener('load', function() {
+  var spinnerWrapper = document.getElementById('spinner-wrapper');
+  var content = document.getElementById('content');
+  
+  spinnerWrapper.style.display = 'none'; // Hide spinner
+  content.style.display = 'block'; // Show content
+});
