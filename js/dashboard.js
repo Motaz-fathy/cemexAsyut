@@ -113,3 +113,54 @@ window.addEventListener('load', function() {
   spinnerWrapper.style.display = 'none'; // Hide spinner
   content.style.display = 'block'; // Show content
 });
+
+
+// truck item 
+
+   // Basic Carousel JavaScript (optional)
+   document.addEventListener('DOMContentLoaded', function () {
+    const carouselItems = document.querySelectorAll('.carousel-item');
+    const prevButton = document.querySelector('.prev-button');
+    const nextButton = document.querySelector('.next-button');
+    let currentIndex = 0;
+    let autoSlideInterval;
+
+    function showImage(index) {
+        carouselItems[currentIndex].classList.add('hidden');
+        currentIndex = index;
+        carouselItems[currentIndex].classList.remove('hidden');
+    }
+
+    function showNextImage() {
+        showImage((currentIndex + 1) % carouselItems.length);
+    }
+
+    function showPrevImage() {
+        showImage((currentIndex - 1 + carouselItems.length) % carouselItems.length);
+    }
+
+    // // Set up automatic sliding
+    // function startAutoSlide() {
+    //     autoSlideInterval = setInterval(showNextImage, 2000);
+    // }
+
+    function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+    }
+
+    // Event listeners for buttons
+    nextButton.addEventListener('click', () => {
+        stopAutoSlide();
+        showNextImage();
+        startAutoSlide();
+    });
+
+    prevButton.addEventListener('click', () => {
+        stopAutoSlide();
+        showPrevImage();
+        startAutoSlide();
+    });
+
+    // Start automatic sliding on page load
+    startAutoSlide();
+});
